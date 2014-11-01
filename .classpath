@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/jsi-1.0b2p1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/trove-0.1.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/uncommons-maths-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/javaml/ajt-1.20.jar"/>
+	<classpathentry kind="lib" path="lib/javaml/commons-math-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/javaml/javaml-0.1.4.jar" sourcepath="/Users/Salim/workspaces/Java/YahooAnswer/YahooAnswer/lib/javaml-0.1.4/javaml-0.1.4-src.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/javaml/weka.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.18-bin.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/genetic/commons-math3-3.1.1/commons-math3-3.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/ekmeans-0.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

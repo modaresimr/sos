@@ -1,0 +1,136 @@
+
+	private void goodClusterTarget(List<SOSEstimatedFireZone> validTarget) {
+		log.info("\n\nFire Zones By Location in Star ");
+		HashMap<Integer, ArrayList<SOSEstimatedFireZone>> fireByLocation = Tools.getFireSiteByLocation(new ArrayList<SOSEstimatedFireZone>(validTarget), starCluster);
+		for (Entry<Integer, ArrayList<SOSEstimatedFireZone>> e : fireByLocation.entrySet())
+			log.info("\t\t" + e);
+		Task myTask = fireBrigade_Task.get(agent.me());
+		TaskType type = myTask.type;
+		log.info("myTask " + myTask);
+
+		if (type == TaskType.SEARCHER) {
+			ArrayList<SOSEstimatedFireZone> neighFire = new ArrayList<SOSEstimatedFireZone>();
+			ArrayList<SOSEstimatedFireZone> myfire = fireByLocation.get(myTask.getZoneIndex());
+
+			if (myTask.getZoneIndex() != 0) {
+				neighFire.addAll(myfire);
+				int index1 = (myTask.getZoneIndex() + starCluster.getStarZones().length - 1) % starCluster.getStarZones().length;
+				int index2 = (myTask.getZoneIndex() + starCluster.getStarZones().length + 1) % starCluster.getStarZones().length;
+				if (index1 == 0)
+					index1 = starCluster.getStarZones().length - 1;
+				if (index2 == 0)
+					index2 = 1;
+				neighFire.addAll(fireByLocation.get(index1));
+				neighFire.addAll(fireByLocation.get(index2));
+				neighFire.addAll(fireByLocation.get(0));
+
+			} else {
+				Collection<ArrayList<SOSEstimatedFireZone>> x = fireByLocation.values();
+				for (ArrayList<SOSEstimatedFireZone> arr : x)
+					neighFire.addAll(arr);
+			}
+
+			distanceScore(neighFire);
+			ExableScore(neighFire);
+			mapCenterScore(neighFire);
+			mapSideScore(neighFire);
+
+		}
+
+		if (type == TaskType.FREE) {
+			for (ArrayList<SOSEstimatedFireZone> myfire : fireByLocation.values())
+			{
+				distanceScore(myfire);
+				ExableScore(myfire);
+				mapCenterScore(myfire);
+				mapSideScore(myfire);
+			}
+		}
+
+		if (type == TaskType.EXTINGUSHER) {
+			ArrayList<SOSEstimatedFireZone> neighFire = new ArrayList<SOSEstimatedFireZone>();
+			ArrayList<SOSEstimatedFireZone> myfire = fireByLocation.get(myTask.getZoneIndex());
+
+			if (myTask.getZoneIndex() != 0) {
+				neighFire.addAll(myfire);
+				int index1 = (myTask.getZoneIndex() + starCluster.getStarZones().length - 1) % starCluster.getStarZones().length;
+				int index2 = (myTask.getZoneIndex() + starCluster.getStarZones().length + 1) % starCluster.getStarZones().length;
+				if (index1 == 0)
+					index1 = starCluster.getStarZones().length - 1;
+				if (index2 == 0)
+					index2 = 1;
+				neighFire.addAll(fireByLocation.get(index1));
+				neighFire.addAll(fireByLocation.get(index2));
+				neighFire.addAll(fireByLocation.get(0));
+
+			} else {
+				Collection<ArrayList<SOSEstimatedFireZone>> x = fireByLocation.values();
+				for (ArrayList<SOSEstimatedFireZone> arr : x)
+					neighFire.addAll(arr);
+			}
+
+			distanceScore(neighFire);
+			ExableScore(neighFire);
+			mapCenterScore(neighFire);
+			mapSideScore(neighFire);
+		}
+	}
+
+	private void normalClusterTarget(List<SOSEstimatedFireZone> validTarget) {
+		log.info("\n\nFire Zones By Location in Star ");
+		HashMap<Integer, ArrayList<SOSEstimatedFireZone>> fireByLocation = Tools.getFireSiteByLocation(new ArrayList<SOSEstimatedFireZone>(validTarget), starCluster);
+		for (Entry<Integer, ArrayList<SOSEstimatedFireZone>> e : fireByLocation.entrySet())
+			log.info("\t\t" + e);
+		Task myTask = fireBrigade_Task.get(agent.me());
+		TaskType type = myTask.type;
+		log.info("myTask " + myTask);
+
+		if (type == TaskType.SEARCHER) {
+			ArrayList<SOSEstimatedFireZone> neighFire = new ArrayList<SOSEstimatedFireZone>();
+			ArrayList<SOSEstimatedFireZone> myfire = fireByLocation.get(myTask.getZoneIndex());
+
+			if (myTask.getZoneIndex() != 0) {
+				neighFire.addAll(myfire);
+				int index1 = (myTask.getZoneIndex() + starCluster.getStarZones().length - 1) % starCluster.getStarZones().length;
+				int index2 = (myTask.getZoneIndex() + starCluster.getStarZones().length + 1) % starCluster.getStarZones().length;
+				if (index1 == 0)
+					index1 = starCluster.getStarZones().length - 1;
+				if (index2 == 0)
+					index2 = 1;
+				neighFire.addAll(fireByLocation.get(index1));
+				neighFire.addAll(fireByLocation.get(index2));
+				neighFire.addAll(fireByLocation.get(0));
+
+			} else {
+				Collection<ArrayList<SOSEstimatedFireZone>> x = fireByLocation.values();
+				for (ArrayList<SOSEstimatedFireZone> arr : x)
+					neighFire.addAll(arr);
+			}
+
+			distanceScore(neighFire);
+			ExableScore(neighFire);
+			mapCenterScore(neighFire);
+			mapSideScore(neighFire);
+
+		}
+
+		if (type == TaskType.FREE) {
+			for (ArrayList<SOSEstimatedFireZone> myfire : fireByLocation.values())
+			{
+				distanceScore(myfire);
+				ExableScore(myfire);
+				mapCenterScore(myfire);
+				mapSideScore(myfire);
+			}
+		}
+
+	}
+
+	private void nonClusterTarget(List<SOSEstimatedFireZone> validTarget) {
+
+		distanceScore(validTarget);
+		ExableScore(validTarget);
+		mapCenterScore(validTarget);
+		mapSideScore(validTarget);
+
+	}

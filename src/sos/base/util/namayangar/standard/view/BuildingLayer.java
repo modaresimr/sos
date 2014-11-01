@@ -1,0 +1,141 @@
+package sos.base.util.namayangar.standard.view;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Shape;
+import java.awt.Stroke;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import rescuecore2.misc.Pair;
+import sos.base.SOSWorldModel;
+import sos.base.entities.AmbulanceCenter;
+import sos.base.entities.Building;
+import sos.base.entities.Edge;
+import sos.base.entities.FireStation;
+import sos.base.entities.PoliceOffice;
+import sos.base.entities.Refuge;
+import sos.base.util.namayangar.misc.gui.ScreenTransform;
+
+/**
+ * A view layer that renders buildings.
+ */
+public class BuildingLayer extends AreaLayer<Building> {
+	private static final Color HEATING = new Color(176, 176, 56, 128);
+	private static final Color BURNING = new Color(204, 122, 50, 128);
+	private static final Color INFERNO = new Color(160, 52, 52, 128);
+	private static final Color WATER_DAMAGE = new Color(50, 120, 130, 128);
+	private static final Color MINOR_DAMAGE = new Color(100, 140, 210, 128);
+	private static final Color MODERATE_DAMAGE = new Color(100, 70, 190, 128);
+	private static final Color SEVERE_DAMAGE = new Color(80, 60, 140, 128);
+	private static final Color BURNT_OUT = new Color(0, 0, 0, 255);
+	
+	private static final Color OUTLINE_COLOUR = Color.GRAY.darker();
+	// private static final Color ENTRANCE = new Color(120, 120, 120);
+	
+	private static final Stroke WALL_STROKE = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER);
+	private static final Stroke ENTRANCE_STROKE = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER);
+	
+	/**
+	 * Construct a building view layer.
+	 */
+	public BuildingLayer() {
+		super(Building.class);
+	}
+	
+	@Override
+	public String getName() {
+		return "Building shapes";
+	}
+	
+	@Override
+	protected void paintEdge(Edge e, Graphics2D g, ScreenTransform t) {
+		g.setColor(OUTLINE_COLOUR);
+		g.setStroke(e.isPassable() ? ENTRANCE_STROKE : WALL_STROKE);
+		g.drawLine(t.xToScreen(e.getStartX()),
+							t.yToScreen(e.getStartY()),
+							t.xToScreen(e.getEndX()),
+							t.yToScreen(e.getEndY()));
+	}
+	
+	@Override
+	protected void paintShape(Building b, Polygon shape, Graphics2D g) {
+		drawBrokenness(b, shape, g);
+		drawFieryness(b, shape, g);
+		paintBuildingType(b, shape, g);
+	}
+	
+	private void paintBuildingType(Building b, Polygon shape, Graphics2D g) {
+		if (b.isOnFire())
+			return;
+		if (b instanceof Refuge)
+			g.setColor(Color.green.darker());
+		else if (b instanceof AmbulanceCenter||b instanceof PoliceOffice||b instanceof FireStation)
+			g.setColor(Color.WHITE.darker());
+		g.fill(shape);
+	}
+	private void drawFieryness(Building b, Polygon shape, Graphics2D g) {
+		if (!b.isFierynessDefined()) {
+			return;
+		}
+		switch (b.getFierynessEnum()) {
+		case UNBURNT:
+			return;
+		case HEATING:
+			g.setColor(HEATING);
+			break;
+		case BURNING:
+			g.setColor(BURNING);
+			break;
+		case INFERNO:
+			g.setColor(INFERNO);
+			break;
+		case WATER_DAMAGE:
+			g.setColor(WATER_DAMAGE);
+			break;
+		case MINOR_DAMAGE:
+			g.setColor(MINOR_DAMAGE);
+			break;
+		case MODERATE_DAMAGE:
+			g.setColor(MODERATE_DAMAGE);
+			break;
+		case SEVERE_DAMAGE:
+			g.setColor(SEVERE_DAMAGE);
+			break;
+		case BURNT_OUT:
+			g.setColor(BURNT_OUT);
+			break;
+		default:
+			throw new IllegalArgumentException("Don't know how to render fieryness " + b.getFierynessEnum());
+		}
+		g.fill(shape);
+	}
+	
+	private void drawBrokenness(Building b, Shape shape, Graphics2D g) {
+		int brokenness = b.getBrokenness();
+		// CHECKSTYLE:OFF:MagicNumber
+		int colour = Math.max(0, 135 - brokenness / 2);
+		// CHECKSTYLE:ON:MagicNumber
+		g.setColor(new Color(colour, colour, colour));
+		g.fill(shape);
+	}
+
+	@Override
+	public int getZIndex() {
+		return 1;
+	}
+
+	@Override
+	public ArrayList<Pair<String, String>> sosInspect(Building entity) {
+		ArrayList<Pair<String, String>> list=super.sosInspect(entity);
+		list.add(new Pair<String,String>("Building Index", entity.getBuildingIndex()+""));
+		list.add(new Pair<String,String>("Permiout", entity.getPermiout()+""));
+		list.add(new Pair<String,String>("IsSearchedForCivilian", entity.isSearchedForCivilian()+""));
+		
+		list.add(new Pair<String,String>("IsSelfSearchedForCivilian", ((SOSWorldModel)world).searchWorldModel.getSearchBuilding(entity).isHasBeenSeenBySelf()+""));
+		list.add(new Pair<String,String>("passableEdges", Arrays.toString(entity.getPassableEdges())+""));
+		return list;
+	}
+}

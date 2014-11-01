@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOS version="6.0">
+	<Destination name="All">
+		<Message header="AgentStock">
+			<MaxSize>20</MaxSize>
+			<Priority>50</Priority>
+			<ChannelType>Low</ChannelType>
+			<ChannelType>Normal</ChannelType>
+			<ChannelType>Voice</ChannelType>
+			
+			<HasKey>true</HasKey>
+			<Data name="area index">13</Data>
+		</Message>
+		<Message header="LowComFireBuiding">
+			<MaxSize>20</MaxSize>
+			<Priority>50</Priority>
+			<ChannelType>Low</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="fieryness">3</Data>
+		</Message>
+<!-- 		<Message header="LowComCivilian">
+			<MaxSize>20</MaxSize>
+			<Priority>51</Priority>
+			<ChannelType>Low</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="valid civilian count">3</Data>
+			<Data name="isReallyUnReachable">1</Data>
+		</Message>
+		 -->
+		<Message header="LowComm1Civilian">
+			<MaxSize>90</MaxSize>
+			<Priority>2</Priority>
+			<ChannelType>Low</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="BuriednessLevel">3</Data>
+			<Data name="death time lossy1">7</Data>
+			<Data name="isReallyReachable">1</Data>
+		</Message>
+		<Message header="LowComm2Civilian">
+			<MaxSize>90</MaxSize>
+			<Priority>3</Priority>
+			<ChannelType>Low</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="BuriednessLevel">3</Data>
+			<Data name="death time lossy1">7</Data>
+			<Data name="death time lossy2">7</Data>
+			<Data name="isReallyReachable">1</Data>
+		</Message>
+		<Message header="LowComm3Civilian">
+			<MaxSize>90</MaxSize>
+			<Priority>4</Priority>
+			<ChannelType>Low</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="BuriednessLevel">3</Data>
+			<Data name="CivilianCounts losy">2</Data><!-- 0==>3  1==>4  2==>7  3==>more -->
+			<Data name="death time lossy1">7</Data>
+			<Data name="death time lossy2">7</Data>
+			<Data name="death time lossy3">7</Data>
+			<Data name="isReallyReachable">1</Data>
+		</Message>
+		<Message header="target FireSite">
+			<MaxSize>20</MaxSize>
+			<Priority>50</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>false</HasKey>
+			<Data name="custom indx b">13</Data>
+			<Data name="custom indx fb">5</Data>
+			<Data name="fire searcher">1</Data>
+		</Message>
+		<Message header="disable FireSite">
+			<MaxSize>20</MaxSize>
+			<Priority>50</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>false</HasKey>
+			<Data name="building index">13</Data>
+		</Message>
+
+		<Message header="end task">
+			<MaxSize>15</MaxSize>
+			<Priority>20</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>false</HasKey>
+			<Data name="fire index">5</Data>
+			<Data name="fire searcher">1</Data>
+		</Message>
+		<Message header="water">
+			<MaxSize>20</MaxSize>
+			<Priority>2</Priority>
+			<ChannelType>Normal</ChannelType>
+			<ChannelType>Voice</ChannelType>
+			<HasKey>false</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="fire index">5</Data>
+		</Message>
+
+		<Message header="no task">
+			<MaxSize>17</MaxSize>
+			<Priority>10</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="fire index">5</Data>
+		</Message>
+		<Message header="open road">
+			<MaxSize>90</MaxSize>
+			<Priority>1</Priority>
+			<ChannelType>Voice</ChannelType>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="road index">13</Data>
+		</Message>
+		<Message header="road state">
+			<MaxSize>90</MaxSize>
+			<Priority>1</Priority>
+			<ChannelType>Voice</ChannelType>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="road index">13</Data>
+		</Message>
+		<Message header="Agent To Edges Reachablity State">
+			<MaxSize>90</MaxSize>
+			<Priority>1</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="road index">13</Data>
+			<Data name="agent index">13</Data>
+		</Message>
+		<Message header="sensed civilian">
+			<MaxSize>100</MaxSize>
+			<Priority>10</Priority>
+			<ChannelType>Voice</ChannelType>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="id">32</Data>
+			<Data name="area index">14</Data>
+			<Data name="hp">5</Data>
+			<Data name="damage">7</Data>
+			<Data name="buriedness">7</Data>
+			<Data name="time">10</Data>
+			<Data name="isReallyReachable">1</Data>
+		</Message>
+		<Message header="low sensed agent">
+			<MaxSize>20</MaxSize>
+			<Priority>20</Priority>
+			<ChannelType>Low</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="agent index">7</Data>
+			<Data name="area index">14</Data>
+			<Data name="Lowburiedness">2</Data>
+		</Message>
+		<Message header="sensed agent">
+			<MaxSize>20</MaxSize>
+			<Priority>20</Priority>
+			<ChannelType>Voice</ChannelType>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="agent index">7</Data>
+			<Data name="area index">14</Data>
+			<Data name="hp">5</Data>
+			<Data name="damage">7</Data>
+			<Data name="buriedness">7</Data>
+			<Data name="time">10</Data>
+		</Message>
+		<Message header="dead agent">
+			<MaxSize>5</MaxSize>
+			<Priority>21</Priority>
+			<ChannelType>Normal</ChannelType>
+			
+			<HasKey>true</HasKey>
+			<Data name="agent index">7</Data>
+		</Message>
+		<Message header="fire">
+			<MaxSize>40</MaxSize>
+			<Priority>22</Priority>
+			<ChannelType>Voice</ChannelType>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="fieryness">4</Data>
+			<Data name="heat">8</Data>
+			<Data name="time">10</Data>
+		</Message>
+		<Message header="position">
+			<MaxSize>40</MaxSize>
+			<Priority>3</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="agent index">7</Data>
+			<Data name="area index">14</Data>
+			<Data name="x">15</Data>
+			<Data name="y">15</Data>
+		</Message>
+		<Message header="searched building">
+			<MaxSize>90</MaxSize>
+			<Priority>1</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="fieryness">4</Data>
+		</Message>
+		<Message header="searched for civilian building">
+			<MaxSize>90</MaxSize>
+			<Priority>1</Priority>
+			<ChannelType>Normal</ChannelType>
+			<ChannelType>Low</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+		</Message>
+		<Message header="no com searched for civilian building">
+			<MaxSize>90</MaxSize>
+			<Priority>3</Priority>
+			<ChannelType>Voice</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="time">10</Data>
+		</Message>
+		<Message header="firezone">
+			<MaxSize>10</MaxSize>
+			<Priority>25</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="building index">13</Data>
+			<Data name="fieryness">4</Data>
+		</Message>
+	</Destination>
+	<Destination name="Fire">
+		<Message header="center checked">
+			<MaxSize>20</MaxSize>
+			<Priority>15</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="inflammable">1</Data>
+		</Message>
+	</Destination>
+	<Destination name="Police">
+	</Destination>
+	<Destination name="Ambulance">
+		<Message header="ambulance assign">
+			<MaxSize>30</MaxSize>
+			<Priority>51</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="ambulance index">5</Data>
+			<Data name="id">32</Data>
+			<Data name="area index">14</Data>
+			<Data name="long life">1</Data>
+		</Message>
+		<Message header="ambulance info">
+			<MaxSize>30</MaxSize>
+			<Priority>50</Priority>
+			<ChannelType>Voice</ChannelType>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="ambulance index">5</Data>
+			<Data name="at state">2</Data>
+			<Data name="id">32</Data>
+			<Data name="finish time">10</Data>
+		</Message>
+		<Message header="ambulance task ack">
+			<MaxSize>30</MaxSize>
+			<Priority>54</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="ambulance index">5</Data>
+			<Data name="id">32</Data>
+			<Data name="ack type">2</Data>
+		</Message>
+		<Message header="ambulance status">
+			<MaxSize>7</MaxSize>
+			<Priority>49</Priority>
+			<ChannelType>Normal</ChannelType>
+			<ChannelType>Voice</ChannelType>
+			<HasKey>true</HasKey>
+			<Data name="ambulance index">5</Data>
+			<Data name="at state">2</Data>
+			<Data name="id">32</Data>
+			<Data name="area index">14</Data>
+			<Data name="time">10</Data>
+			<Data name="need help">1</Data>
+		</Message>
+		<Message header="ignored target">
+			<MaxSize>60</MaxSize>
+			<Priority>49</Priority>
+			<ChannelType>Voice</ChannelType>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>True</HasKey>
+			<Data name="id">32</Data>
+		</Message>
+		<Message header="Im healthy and can act">
+			<MaxSize>60</MaxSize>
+			<Priority>9</Priority>
+			<ChannelType>Normal</ChannelType>
+			<HasKey>True</HasKey>
+			<Data name="agent index">7</Data>
+		</Message>
+	</Destination>
+	<Destination name="FireAmbulance">
+	</Destination>
+	<Destination name="PoliceAmbulance">
+	</Destination>
+	<Destination name="FirePolice">
+	</Destination>
+</SOS>
